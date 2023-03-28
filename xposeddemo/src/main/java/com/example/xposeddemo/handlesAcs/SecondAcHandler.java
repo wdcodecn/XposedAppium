@@ -1,16 +1,11 @@
 package com.example.xposeddemo.handlesAcs;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-
-import com.example.xposeddemo.utils.CLogUtils;
 
 import com.zhenxi.Superappium.PageManager;
 import com.zhenxi.Superappium.SwipeUtils;
 import com.zhenxi.Superappium.ViewImage;
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XposedBridge;
+import com.zhenxi.Superappium.utils.CLogUtils;
 
 /**
  * @author Zhenxi on 2020-07-03

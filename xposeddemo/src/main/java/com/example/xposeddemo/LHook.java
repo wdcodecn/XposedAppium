@@ -2,9 +2,10 @@ package com.example.xposeddemo;
 
 import com.example.xposeddemo.handlesAcs.LoginAcHandler;
 import com.example.xposeddemo.handlesAcs.SecondAcHandler;
-import com.example.xposeddemo.utils.CLogUtils;
 
 import com.zhenxi.Superappium.PageManager;
+import com.zhenxi.Superappium.utils.CLogUtils;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
@@ -17,13 +18,17 @@ public class LHook implements IXposedHookLoadPackage {
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
 
-        if (lpparam.processName.equals("com.example.xposedappium")) {
-            CLogUtils.e("发现匹配的App");
-            //设置页面Handler 两秒后开始执行
-            PageManager.setTaskDuration(2000);
+        String pkg = "com.example.xposedappium";
+        if (lpparam.processName.equals(pkg)) {
+            CLogUtils.e("发现匹配的App " + pkg);
             //添加需要处理的Activity
             AddHandleActivity();
-
+        }
+        String pkg1 = "com.leiting.wf";
+        if (lpparam.processName.equals(pkg1)) {
+            CLogUtils.e("发现匹配的App " + pkg1);
+            //添加需要处理的Activity
+            AddHandleActivity1();
         }
     }
 
@@ -32,6 +37,15 @@ public class LHook implements IXposedHookLoadPackage {
                 new LoginAcHandler());
         PageManager.addHandler("com.example.xposedappium.ui.login.SecondActivity",
                 new SecondAcHandler());
-        CLogUtils.e("AddHandleActivity 注册完毕 ");
+
+        CLogUtils.e("AddHandleActivity 注册完毕");
+    }
+    private void AddHandleActivity1() {
+        PageManager.addHandler("air.com.leiting.wf.AppEntry",
+                new LoginAcHandler());
+//        PageManager.addHandler("com.example.xposedappium.ui.login.SecondActivity",
+//                new SecondAcHandler());
+
+        CLogUtils.e("AddHandleActivity 注册完毕");
     }
 }

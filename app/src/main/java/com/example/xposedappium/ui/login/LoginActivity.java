@@ -29,6 +29,10 @@ import com.example.xposedappium.R;
 import com.example.xposedappium.ui.login.LoginViewModel;
 import com.example.xposedappium.ui.login.LoginViewModelFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
@@ -121,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Log.e("XposedAppium","Login页面被创建");
+        Log.e("app","Login页面被创建");
 
     }
 
