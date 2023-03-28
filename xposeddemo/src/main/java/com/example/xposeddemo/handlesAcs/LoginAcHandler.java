@@ -18,19 +18,14 @@ public class LoginAcHandler implements PageManager.ActivityFocusHandler {
 
 
         //get View
-//        ViewImage username = root.xpath2One
-//                ("//android.widget.EditText[@id='com.example.xposedappium:id/username']");
-//        username.setText("123456");
-//
-//        ViewImage password = root.xpath2One("//android.widget.EditText[@id='com.example.xposedappium:id/password']");
-//        password.setText("123456");
-//        //get and click View
+        ViewImage username = root.xpath2One
+                ("//android.widget.EditText[@id='com.example.xposedappium:id/username']");
+        username.setText("123456");
 
-        root.clickByXpath("//android.view.View[@clickable=true]");
-
-
-        root.clickByXpath("//*[@clickable='true']");
-        root.clickByXpath("//*[@class='android.view.View']");
+        ViewImage password = root.xpath2One("//android.widget.EditText[@id='com.example.xposedappium:id/password']");
+        password.setText("123456");
+        //get and click View
+        root.clickByXpath("//android.widget.Button[@id='com.example.xposedappium:id/login']");
 
         //判断是否消费此次事件，返回false则再次执行
         return true;

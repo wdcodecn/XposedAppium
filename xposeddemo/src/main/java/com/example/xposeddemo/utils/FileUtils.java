@@ -1,8 +1,12 @@
 package com.example.xposeddemo.utils;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
+
+import com.zhenxi.Superappium.utils.CLogUtils;
 
 import java.io.Closeable;
 import java.io.File;
@@ -13,17 +17,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-import static android.content.ContentValues.TAG;
-
-import com.zhenxi.Superappium.utils.CLogUtils;
-
 /**
  * Created by Lyh on
  * 2019/6/19
  */
 public class FileUtils {
 
-    private  static final File sdCardDir = Environment.getExternalStorageDirectory();//获取SDCard目录,2.2的时候为:/mnt/sdcart
+    private static final File sdCardDir = Environment.getExternalStorageDirectory();//获取SDCard目录,2.2的时候为:/mnt/sdcart
+
     /***
      * 调用方式
      *
@@ -70,9 +71,7 @@ public class FileUtils {
     }
 
 
-
-
-    public  static void SaveString(Context mContext, String str, String fileName) {
+    public static void SaveString(Context mContext, String str, String fileName) {
         FileWriter fw = null;
         try {
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -84,7 +83,7 @@ public class FileUtils {
 //                    filedir.mkdirs();
 //                }
                 File saveFile = new File(sdCardDir, fileName + ".txt");
-                if(!saveFile.exists()){
+                if (!saveFile.exists()) {
                     saveFile.createNewFile();
                 }
                 fw = new FileWriter(saveFile, true);
@@ -96,19 +95,19 @@ public class FileUtils {
                     pw.close();
                     fw.close();
                 } catch (IOException e) {
-                    CLogUtils.e("保存 文件出错 "+e.getMessage()+"\n");
+                    CLogUtils.e("保存 文件出错 " + e.getMessage() + "\n");
                 }
             }
         } catch (IOException e) {
-            CLogUtils.e("保存 文件出错 "+e.getMessage()+"\n");
+            CLogUtils.e("保存 文件出错 " + e.getMessage() + "\n");
         }
     }
 
-    public static void DeleteFile(String PackageName){
+    public static void DeleteFile(String PackageName) {
         FileWriter fw = null;
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             File sdCardDir = Environment.getExternalStorageDirectory();
-            File filedir = new File(sdCardDir + File.separator + "EncryptStack/"+PackageName+".txt");  // 这里的AA为创建的AA文件夹，在根目录下
+            File filedir = new File(sdCardDir + File.separator + "EncryptStack/" + PackageName + ".txt");  // 这里的AA为创建的AA文件夹，在根目录下
             if (filedir.exists()) {
                 filedir.delete();
             }

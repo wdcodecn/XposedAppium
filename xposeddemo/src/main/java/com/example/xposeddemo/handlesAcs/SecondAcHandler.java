@@ -20,7 +20,7 @@ public class SecondAcHandler implements PageManager.ActivityFocusHandler {
         boolean isSucess = root.clickByXpath("//android.widget.Button[@text='确定']");
         CLogUtils.e("点击按钮完毕 " + isSucess);
 
-        SwipeUtils.simulateScroll(200,200,500,500);
+        SwipeUtils.simulateScroll(200, 200, 500, 500);
 
         return true;
     }
